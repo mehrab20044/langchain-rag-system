@@ -1,0 +1,7 @@
+FastAPI is a modern Python framework for building APIs.
+
+Pinecone is a vector database used for similarity search.
+
+Embeddings convert text into numerical vectors.
+
+RAG combines retrieval with generation to answer questions using external context.
