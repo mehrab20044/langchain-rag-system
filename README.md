@@ -37,3 +37,22 @@ Query → Retrieval → Context → LLM → Answer + Sources
 - Generated answers with ToGPT.
 - Returned sources with the answer.
 - Tested out-of-context questions successfully.
+
+
+
+## Day 28 — LangChain Core
+
+Rebuilt the RAG pipeline with LangChain components:
+
+Query → Retriever → PromptTemplate → ChatOpenAI → StrOutputParser → Answer
+
+### Comparison
+
+Manual version:
+- more direct control
+- more request/parsing code
+
+LangChain version:
+- cleaner component structure
+- easier to replace models and pipeline parts
+- adds extra abstraction and dependencies
