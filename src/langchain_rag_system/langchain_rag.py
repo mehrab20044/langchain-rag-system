@@ -1,10 +1,11 @@
 import os
 
 from dotenv import load_dotenv
-from langchain_core.runnables import RunnableLambda
-from langchain_core.prompts import PromptTemplate
-from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import StrOutputParser
+from langchain_core.prompts import PromptTemplate
+from langchain_core.runnables import RunnableLambda, RunnablePassthrough
+from langchain_openai import ChatOpenAI
+
 from langchain_rag_system.retriever import (
     cosine_similarity,
     embed_chunks,
@@ -12,9 +13,12 @@ from langchain_rag_system.retriever import (
     load_chunks,
 )
 
+
 load_dotenv()
-output_parser = StrOutputParser()
+
 TOGPT_API_KEY = os.getenv("TOGPT_API_KEY")
+
+output_parser = StrOutputParser()
 
 
 prompt_template = PromptTemplate.from_template(
@@ -42,14 +46,7 @@ llm = ChatOpenAI(
 )
 
 
-chain = prompt_template | llm | output_parser
-
-
-
-
-
-def retrieve_context(query: str) -> str:
-    retrieve_component = RunnableLambda(retrieve_context)
+def retrieve_result(query: str) -> dict:
     chunks = load_chunks()
 
     chunk_embeddings = embed_chunks(chunks)
@@ -67,6 +64,7 @@ def retrieve_context(query: str) -> str:
             {
                 "text": chunks[index],
                 "score": float(score),
+                "source_id": f"knowledge.txt#chunk-{index + 1}",
             }
         )
 
@@ -75,14 +73,32 @@ def retrieve_context(query: str) -> str:
         reverse=True,
     )
 
-    return results[0]["text"]
+    return results[0]
+
+
+def retrieve_context(query: str) -> str:
+    result = retrieve_result(query)
+
+    return result["text"]
+
+
+retriever_component = RunnableLambda(retrieve_context)
+
+
+chain = (
+    {
+        "context": retriever_component,
+        "query": RunnablePassthrough(),
+    }
+    | prompt_template
+    | llm
+    | output_parser
+)
+
 
 if __name__ == "__main__":
     result = chain.invoke(
-        {
-            "context": "Pinecone is a vector database used for similarity search.",
-            "query": "What is Pinecone used for?",
-        }
+        "What is Pinecone used for?"
     )
 
     print(result)

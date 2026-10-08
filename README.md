@@ -56,3 +56,11 @@ LangChain version:
 - cleaner component structure
 - easier to replace models and pipeline parts
 - adds extra abstraction and dependencies
+
+
+## Day 29 — RAG + FastAPI + Streaming
+
+- Added `/rag` endpoint.
+- Added `/rag/stream` with streaming responses.
+- Preserved context and source ID.
+- Added input validation for empty queries.
