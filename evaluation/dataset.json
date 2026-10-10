@@ -1,0 +1,32 @@
+[
+  {
+    "query": "What is FastAPI?",
+    "expected_answer": "FastAPI is a modern Python framework for building APIs.",
+    "relevant_source_ids": ["knowledge.txt#chunk-1"],
+    "answerable": true
+  },
+  {
+    "query": "What is Pinecone used for?",
+    "expected_answer": "Pinecone is used for similarity search.",
+    "relevant_source_ids": ["knowledge.txt#chunk-2"],
+    "answerable": true
+  },
+  {
+    "query": "What do embeddings do?",
+    "expected_answer": "Embeddings convert text into numerical vectors.",
+    "relevant_source_ids": ["knowledge.txt#chunk-3"],
+    "answerable": true
+  },
+  {
+    "query": "What does RAG combine?",
+    "expected_answer": "RAG combines retrieval with generation to answer questions using external context.",
+    "relevant_source_ids": ["knowledge.txt#chunk-4"],
+    "answerable": true
+  },
+  {
+    "query": "What is FastAPI's latest version?",
+    "expected_answer": "I don't have enough information to answer.",
+    "relevant_source_ids": [],
+    "answerable": false
+  }
+]

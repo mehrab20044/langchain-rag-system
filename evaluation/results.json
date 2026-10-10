@@ -1,0 +1,69 @@
+{
+  "summary": {
+    "mean_precision_at_1": 1.0,
+    "mean_recall_at_1": 1.0,
+    "mean_bleu_answerable": 82.31409378197074
+  },
+  "results": [
+    {
+      "query": "What is FastAPI?",
+      "answerable": true,
+      "expected_answer": "FastAPI is a modern Python framework for building APIs.",
+      "answer": "FastAPI is a modern Python framework for building APIs.",
+      "retrieved_source_id": "knowledge.txt#chunk-1",
+      "context": "FastAPI is a modern Python framework for building APIs.",
+      "precision_at_1": 1.0,
+      "recall_at_1": 1.0,
+      "bleu": 100.00000000000004,
+      "refusal_exact_match": null
+    },
+    {
+      "query": "What is Pinecone used for?",
+      "answerable": true,
+      "expected_answer": "Pinecone is used for similarity search.",
+      "answer": "Pinecone is used for similarity search.",
+      "retrieved_source_id": "knowledge.txt#chunk-2",
+      "context": "Pinecone is a vector database used for similarity search.",
+      "precision_at_1": 1.0,
+      "recall_at_1": 1.0,
+      "bleu": 100.00000000000004,
+      "refusal_exact_match": null
+    },
+    {
+      "query": "What do embeddings do?",
+      "answerable": true,
+      "expected_answer": "Embeddings convert text into numerical vectors.",
+      "answer": "Embeddings convert text into numerical vectors.",
+      "retrieved_source_id": "knowledge.txt#chunk-3",
+      "context": "Embeddings convert text into numerical vectors.",
+      "precision_at_1": 1.0,
+      "recall_at_1": 1.0,
+      "bleu": 100.00000000000004,
+      "refusal_exact_match": null
+    },
+    {
+      "query": "What does RAG combine?",
+      "answerable": true,
+      "expected_answer": "RAG combines retrieval with generation to answer questions using external context.",
+      "answer": "RAG combines retrieval with generation.",
+      "retrieved_source_id": "knowledge.txt#chunk-4",
+      "context": "RAG combines retrieval with generation to answer questions using external context.",
+      "precision_at_1": 1.0,
+      "recall_at_1": 1.0,
+      "bleu": 29.256375127882833,
+      "refusal_exact_match": null
+    },
+    {
+      "query": "What is FastAPI's latest version?",
+      "answerable": false,
+      "expected_answer": "I don't have enough information to answer.",
+      "answer": "I don't have enough information to answer.",
+      "retrieved_source_id": "knowledge.txt#chunk-1",
+      "context": "FastAPI is a modern Python framework for building APIs.",
+      "precision_at_1": null,
+      "recall_at_1": null,
+      "bleu": 100.00000000000004,
+      "refusal_exact_match": true
+    }
+  ]
+}
